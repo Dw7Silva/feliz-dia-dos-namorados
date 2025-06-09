@@ -4,118 +4,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Livia - Nosso Amor</title>
+    <title>Para Livia, com amor 💙</title>
+    <meta name="description" content="Carta de amor digital do Derick para Livia">
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <div class="loading-screen">
-        <div class="loader"></div>
-        <p>Carregando nosso amor...</p>
-    </div>
-
-    <header class="hero-section">
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
         <div class="hero-content">
-            <h1>Para Livia</h1>
-            <p>O amor da minha vida</p>
-            <button id="startBtn" class="heart-btn">Abre meu coração <i class="fas fa-heart"></i></button>
+            <h1 class="hero-title">Livia</h1>
+            <p class="hero-subtitle">essa carta é só o começo do que eu sinto por você...</p>
+            <button class="heart-button" onclick="scrollToLetter()">
+                Abre meu coração ❤️
+            </button>
         </div>
-        <div class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </header>
+        <div class="floating-hearts"></div>
+    </section>
 
-    <main>
-        <section id="love-letter" class="section love-letter-section">
-            <div class="section-header">
-                <h2>Minha Carta para Você</h2>
-                <div class="stitch-ears"></div>
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Nossos Momentos</h2>
+            <div class="gallery-grid">
+                <div class="photo-polaroid" data-photo="1">
+                    <img src="./components/photos/photo1.jpg" alt="Nosso momento 1" loading="lazy">
+                    <div class="polaroid-caption">Sempre juntos</div>
+                </div>
+                <div class="photo-polaroid" data-photo="2">
+                    <img src="./components/photos/photo2.jpg" alt="Nosso momento 2" loading="lazy">
+                    <div class="polaroid-caption">Só importa a sua companhia</div>
+                </div>
+                <div class="photo-polaroid" data-photo="3">
+                    <img src="./components/photos/photo3.jpg" alt="Nosso momento 3" loading="lazy">
+                    <div class="polaroid-caption">Sempre nos amando</div>
+                </div>
+                <div class="photo-polaroid" data-photo="4">
+                    <img src="./components/photos/photo4.jpg" alt="Nosso momento 4" loading="lazy">
+                    <div class="polaroid-caption">Risadas juntos</div>
+                </div>
+                <div class="photo-polaroid" data-photo="5">
+                    <img src="./components/photos/photo5.jpg" alt="Nosso momento 5" loading="lazy">
+                    <div class="polaroid-caption">Juntos com Deus</div>
+                </div>
+                <div class="video-polaroid">
+                    <video poster="./components/video/fundo video.PNG" controls>
+                        <source src="./components/video/our-video.mp4" type="video/mp4">
+                        Nosso vídeo especial
+                    </video>
+                    <div class="polaroid-caption">Nosso vídeo</div>
+                </div>
+                <div class="photo-polaroid" data-photo="6">
+                    <img src="./components/photos/photo6.jpg" alt="Nosso momento 6" loading="lazy">
+                    <div class="polaroid-caption">Três meses</div>
+                </div>
+                <div class="photo-polaroid" data-photo="7">
+                    <img src="./components/photos/photo7.png" alt="Nosso momento 7" loading="lazy">
+                    <div class="polaroid-caption">Aventuras</div>
+                </div>
+                <div class="photo-polaroid" data-photo="8">
+                    <img src="./components/photos/photo8.jpg" alt="Nosso momento 8" loading="lazy">
+                    <div class="polaroid-caption">Cumplicidade</div>
+                </div>
+                <div class="photo-polaroid" data-photo="9">
+                    <img src="./components/photos/photo9.jpg" alt="Nosso momento 9" loading="lazy">
+                    <div class="polaroid-caption">Carinho</div>
+                </div>
             </div>
-            <div class="letter-container">
-                <div class="letter-paper">
-                    <div class="letter-content">
-                        <p class="typing-animation" id="letter-text"></p>
+
+            <!-- Music Player -->
+            <div class="music-player">
+                <button id="musicToggle" class="music-btn">
+                    <span class="music-icon">🎵</span>
+                    <span class="music-text">Nossa Música</span>
+                </button>
+                <audio id="backgroundMusic" loop>
+                    <source src="components/nosso-lugar.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Letter Section -->
+    <section id="letter" class="letter-section">
+        <div class="container">
+            <div class="letter-paper">
+                <div class="letter-header">
+                    <div class="letter-date">14 de Fevereiro, 2024</div>
+                </div>
+                <div class="letter-content">
+                    <div class="letter-greeting typewriter" data-text="Oi, meu amor">
+                        <span class="cursor">|</span>
                     </div>
-                    <div class="letter-footer">
-                        <p>Com todo meu amor,</p>
-                        <p class="signature">Derick</p>
+
+                    <div class="letter-paragraph typewriter"
+                        data-text="Eu podia escrever mil coisas aqui tentando explicar o quanto eu te amo, mas nenhuma palavra no mundo consegue mostrar tudo que eu sinto por você.">
+                    </div>
+
+                    <div class="letter-paragraph typewriter"
+                        data-text="Lembra da praça onde tudo começou? Aquele lugar que virou cenário das nossas risadas, conversas e também do dia em que eu te pedi em namoro. Eu tava nervoso demais, mas sabia que aquele momento ia mudar minha vida, e mudou, pra melhor.">
+                    </div>
+
+                    <div class="letter-paragraph typewriter"
+                        data-text="A gente se desentende às vezes, e nem é pouco, né? Mas mesmo quando as coisas ficam difíceis, é com você que eu quero estar. Amar você é isso: passar pelos altos e baixos e continuar escolhendo ficar, mesmo nas diferenças.">
+                    </div>
+
+                    <div class="letter-paragraph typewriter"
+                        data-text="Você é o meu lugar seguro, meu caos preferido e o motivo de muitos sorrisos meus por aí, do nada.">
+                    </div>
+
+                    <div class="letter-paragraph typewriter"
+                        data-text="Te amo mais do que ontem e menos do que amanhã. Sempre.">
                     </div>
                 </div>
-                <div class="seal"></div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section gallery-section">
-            <div class="section-header">
-                <h2>Nossos Momentos</h2>
-                <div class="stitch-ears"></div>
-            </div>
-            <div class="gallery-container">
-                <!-- Fotos serão adicionadas dinamicamente via JavaScript -->
-                <div class="gallery-placeholder">
-                    <p>Nossas memórias mais preciosas aparecerão aqui...</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section quiz-section">
-            <div class="section-header">
-                <h2>Quanto a gente se conhece?</h2>
-                <div class="stitch-ears"></div>
-            </div>
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz-section">
+        <div class="container">
+            <h2 class="section-title">Quanto a gente se conhece?</h2>
             <div class="quiz-container">
-                <div id="quiz" class="quiz">
-                    <!-- Quiz será gerado dinamicamente via JavaScript -->
-                </div>
-                <div id="quiz-result" class="quiz-result hidden">
-                    <div class="result-content"></div>
-                    <button id="restart-quiz" class="heart-btn">Fazer novamente</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="section gift-section">
-            <div class="section-header">
-                <h2>Meu Presente para Você</h2>
-                <div class="stitch-ears"></div>
-            </div>
-            <div class="gift-container">
-                <div class="gift-box">
-                    <div class="gift-lid"></div>
-                    <div class="gift-body">
-                        <p>Para colorirmos nosso futuro juntos</p>
+                <div class="question" data-question="1">
+                    <h3>Onde foi nosso primeiro beijo?</h3>
+                    <div class="options">
+                        <button class="option" data-correct="false">No cinema</button>
+                        <button class="option" data-correct="false">Na nossa praça</button>
+                        <button class="option" data-correct="true">Na exapit</button>
+                        <button class="option" data-correct="false">Na sua casa</button>
                     </div>
                 </div>
-                <p class="gift-message">Case de canetas para seus Boobie Goods!</p>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>Te amo mais do que ontem e menos do que amanhã</p>
-            <div class="heart-container" id="easter-egg-trigger">
-                <i class="fas fa-heart"></i>
+                <div class="question" data-question="2">
+                    <h3>Qual presente eu mais amei ganhar de você?</h3>
+                    <div class="options">
+                        <button class="option" data-correct="false">Aquele Hot Wheels</button>
+                        <button class="option" data-correct="false">A camiseta de aniversário</button>
+                        <button class="option" data-correct="false">O creme de cabelo</button>
+                        <button class="option" data-correct="true">A caixa que você me deu nos três meses de
+                            namoro</button>
+                    </div>
+                </div>
+
+                <div class="question" data-question="3">
+                    <h3>O que eu mais amo em você?</h3>
+                    <div class="options">
+                        <button class="option" data-correct="false">Seu sorriso</button>
+                        <button class="option" data-correct="false">Seu jeito de me fazer rir mesmo bravo</button>
+                        <button class="option" data-correct="true">Você ser meu "lugar seguro"</button>
+                        <button class="option" data-correct="false">Seu abraço</button>
+                    </div>
+                </div>
+
+                <div class="question" data-question="4">
+                    <h3>Qual a nossa música?</h3>
+                    <div class="options">
+                        <button class="option" data-correct="true">"Nosso Lugar" – MC Kevin</button>
+                        <button class="option" data-correct="false">"Die For You" – The Weeknd</button>
+                        <button class="option" data-correct="false">"Ciumeira" – Ana Castela</button>
+                        <button class="option" data-correct="false">A gente não tem uma</button>
+                    </div>
+                </div>
+
+                <div class="quiz-result" id="quizResult"></div>
             </div>
-            <p class="copyright">Derick & Livia - 2024</p>
+        </div>
+    </section>
+
+    <!-- Gift Section -->
+    <section id="gift" class="gift-section">
+        <div class="container">
+            <div class="gift-reveal">
+                <h2 class="gift-title">Seu Presente 🎁</h2>
+                <div class="gift-image">
+                    <img src="./components/casecanetinha.png" alt="Case de canetas coloridas" id="giftImg">
+                </div>
+                <div class="gift-message" id="giftMessage">
+                    <p>"Porque até nos rabiscos, você faz minha vida mais colorida. Te amo, Stitch da minha vida!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="signature">
+                <p>De seu Derick, eternamente seu 💙</p>
+                <div class="easter-egg-heart" id="easterEggHeart">💙</div>
+            </div>
         </div>
     </footer>
 
-    <audio id="bg-music" loop>
-        <source src="components/nosso-lugar.mp3" type="audio/mpeg">
-    </audio>
-
-    <div id="easter-egg" class="easter-egg hidden">
-        <div class="easter-egg-content">
-            <img src="components/stitch.png" alt="Stitch">
-            <p>Livia + Derick = 💙</p>
-            <button id="close-easter-egg" class="heart-btn">Fechar</button>
+    <!-- Easter Egg Modal with Stitch -->
+    <div id="stitchModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="stitch-surprise">
+                <img src="./components/stitch.png" alt="Stitch" class="stitch-image">
+                <p class="stitch-message">Livia + Derick = 💙</p>
+                <p class="stitch-quote">"Ohana significa família, e família significa que ninguém fica para trás!"</p>
+            </div>
         </div>
     </div>
 
