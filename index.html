@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Livia - Nosso Amor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="loading-screen">
+        <div class="loader"></div>
+        <p>Carregando nosso amor...</p>
+    </div>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Para Livia</h1>
+            <p>O amor da minha vida</p>
+            <button id="startBtn" class="heart-btn">Abre meu coração <i class="fas fa-heart"></i></button>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <main>
+        <section id="love-letter" class="section love-letter-section">
+            <div class="section-header">
+                <h2>Minha Carta para Você</h2>
+                <div class="stitch-ears"></div>
+            </div>
+            <div class="letter-container">
+                <div class="letter-paper">
+                    <div class="letter-content">
+                        <p class="typing-animation" id="letter-text"></p>
+                    </div>
+                    <div class="letter-footer">
+                        <p>Com todo meu amor,</p>
+                        <p class="signature">Derick</p>
+                    </div>
+                </div>
+                <div class="seal"></div>
+            </div>
+        </section>
+
+        <section class="section gallery-section">
+            <div class="section-header">
+                <h2>Nossos Momentos</h2>
+                <div class="stitch-ears"></div>
+            </div>
+            <div class="gallery-container">
+                <!-- Fotos serão adicionadas dinamicamente via JavaScript -->
+                <div class="gallery-placeholder">
+                    <p>Nossas memórias mais preciosas aparecerão aqui...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section quiz-section">
+            <div class="section-header">
+                <h2>Quanto a gente se conhece?</h2>
+                <div class="stitch-ears"></div>
+            </div>
+            <div class="quiz-container">
+                <div id="quiz" class="quiz">
+                    <!-- Quiz será gerado dinamicamente via JavaScript -->
+                </div>
+                <div id="quiz-result" class="quiz-result hidden">
+                    <div class="result-content"></div>
+                    <button id="restart-quiz" class="heart-btn">Fazer novamente</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gift-section">
+            <div class="section-header">
+                <h2>Meu Presente para Você</h2>
+                <div class="stitch-ears"></div>
+            </div>
+            <div class="gift-container">
+                <div class="gift-box">
+                    <div class="gift-lid"></div>
+                    <div class="gift-body">
+                        <p>Para colorirmos nosso futuro juntos</p>
+                    </div>
+                </div>
+                <p class="gift-message">Case de canetas para seus Boobie Goods!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Te amo mais do que ontem e menos do que amanhã</p>
+            <div class="heart-container" id="easter-egg-trigger">
+                <i class="fas fa-heart"></i>
+            </div>
+            <p class="copyright">Derick & Livia - 2024</p>
+        </div>
+    </footer>
+
+    <audio id="bg-music" loop>
+        <source src="components/nosso-lugar.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="easter-egg" class="easter-egg hidden">
+        <div class="easter-egg-content">
+            <img src="components/stitch.png" alt="Stitch">
+            <p>Livia + Derick = 💙</p>
+            <button id="close-easter-egg" class="heart-btn">Fechar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
