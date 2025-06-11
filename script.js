@@ -5,6 +5,7 @@ let clickCount = 0;
 let musicPlaying = false;
 let typewriterQueue = [];
 let isTyping = false;
+let swiper = null;
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,7 +14,37 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setupImageLoading();
     startTypewriterEffect();
+    initSwiper();
 });
+
+// Initialize Swiper carousel
+function initSwiper() {
+    swiper = new Swiper('.gallery-carousel', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            }
+        }
+    });
+}
 
 // Smooth scrolling to letter section
 function scrollToLetter() {
@@ -51,7 +82,19 @@ function setupEventListeners() {
     setupQuiz();
     setupEasterEgg();
     setupModal();
-    setupGallery();
+    setupScrollIndicator();
+}
+
+// Setup scroll indicator
+function setupScrollIndicator() {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', function() {
+            document.getElementById('gallery').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    }
 }
 
 // Music Player Setup
@@ -60,6 +103,16 @@ function setupMusicPlayer() {
     const backgroundMusic = document.getElementById('backgroundMusic');
     const musicText = musicToggle.querySelector('.music-text');
     const musicIcon = musicToggle.querySelector('.music-icon');
+
+    // Check if music was playing before
+    if (localStorage.getItem('musicPlaying') === 'true') {
+        backgroundMusic.play().catch(e => {
+            console.log('Erro ao reproduzir música:', e);
+        });
+        musicText.textContent = 'Pausar Música';
+        musicIcon.textContent = '⏸️';
+        musicPlaying = true;
+    }
 
     musicToggle.addEventListener('click', function() {
         if (musicPlaying) {
@@ -75,32 +128,18 @@ function setupMusicPlayer() {
             musicIcon.textContent = '⏸️';
             musicPlaying = true;
         }
+        localStorage.setItem('musicPlaying', musicPlaying);
     });
 
-    // Auto-play attempt (browsers may block this)
-    setTimeout(() => {
-        backgroundMusic.play().catch(e => {
-            console.log('Auto-play bloqueado pelo navegador');
-        });
-    }, 2000);
-}
-
-// Gallery interactions
-function setupGallery() {
-    const polaroids = document.querySelectorAll('.photo-polaroid, .video-polaroid');
-    
-    polaroids.forEach((polaroid, index) => {
-        polaroid.addEventListener('click', function() {
-            // Add a special effect when clicked
-            this.style.transform = 'rotate(0deg) scale(1.1)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 300);
-        });
-        
-        // Stagger the animation
-        polaroid.style.animationDelay = `${index * 0.1}s`;
-    });
+    // Auto-play attempt with user interaction
+    document.body.addEventListener('click', function firstInteraction() {
+        if (!musicPlaying && localStorage.getItem('musicPlaying') !== 'false') {
+            backgroundMusic.play().catch(e => {
+                console.log('Auto-play bloqueado pelo navegador');
+            });
+        }
+        document.body.removeEventListener('click', firstInteraction);
+    }, { once: true });
 }
 
 // Typewriter Effect
@@ -212,21 +251,21 @@ function showQuizResult() {
     
     if (correctAnswers >= 3) {
         resultMessage = `
-            <h3 style="color: #28a745; font-family: 'Dancing Script', cursive; font-size: 2rem; margin-bottom: 1rem;">
+            <h3 style="color: var(--success-color); font-family: 'Dancing Script', cursive; font-size: 2rem; margin-bottom: 1rem;">
                 Parabéns! Você acertou ${correctAnswers} de 4! 🎉
             </h3>
-            <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop" alt="Case de canetas" style="border-radius: 10px; margin: 1rem 0;">
-            <p style="font-size: 1.1rem; color: #667eea;">
+            <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop" alt="Case de canetas" style="border-radius: 10px; margin: 1rem 0;" loading="lazy">
+            <p style="font-size: 1.1rem; color: var(--primary-color);">
                 "Você me conhece tão bem quanto eu te amo! Aqui está um presente para colorirmos mais momentos juntos. Feliz Dia dos Namorados!"
             </p>
         `;
     } else {
         resultMessage = `
-            <h3 style="color: #667eea; font-family: 'Dancing Script', cursive; font-size: 2rem; margin-bottom: 1rem;">
+            <h3 style="color: var(--primary-color); font-family: 'Dancing Script', cursive; font-size: 2rem; margin-bottom: 1rem;">
                 Você acertou ${correctAnswers} de 4! 💙
             </h3>
-            <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop" alt="Case de canetas" style="border-radius: 10px; margin: 1rem 0;">
-            <p style="font-size: 1.1rem; color: #667eea;">
+            <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop" alt="Case de canetas" style="border-radius: 10px; margin: 1rem 0;" loading="lazy">
+            <p style="font-size: 1.1rem; color: var(--primary-color);">
                 "Tudo bem, amor! O presente é seu de qualquer jeito. A gente ainda vai se conhecer muito mais!"
             </p>
         `;
@@ -269,6 +308,12 @@ function showStitchSurprise() {
     
     // Add some confetti effect
     createConfetti();
+    
+    // Play a sound if possible
+    const audio = new Audio();
+    audio.src = 'https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3';
+    audio.volume = 0.3;
+    audio.play().catch(e => console.log('Não foi possível reproduzir o som:', e));
 }
 
 function createConfetti() {
@@ -329,6 +374,7 @@ function setupModal() {
 // Image Loading Setup
 function setupImageLoading() {
     const images = document.querySelectorAll('img');
+    const videos = document.querySelectorAll('video');
     
     images.forEach(img => {
         img.setAttribute('data-loaded', 'false');
@@ -341,6 +387,18 @@ function setupImageLoading() {
             console.log('Erro ao carregar imagem:', this.src);
             // Provide fallback or placeholder
             this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjY2NjIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbSBuw6NvIGVuY29udHJhZGE8L3RleHQ+PC9zdmc+';
+        });
+    });
+    
+    videos.forEach(video => {
+        video.setAttribute('data-loaded', 'false');
+        
+        video.addEventListener('loadeddata', function() {
+            this.setAttribute('data-loaded', 'true');
+        });
+        
+        video.addEventListener('error', function() {
+            console.log('Erro ao carregar vídeo:', this.src);
         });
     });
 }
@@ -364,8 +422,9 @@ function debounce(func, wait) {
 
 // Handle window resize
 window.addEventListener('resize', debounce(() => {
-    // Recalculate animations or layouts if needed
-    console.log('Window resized');
+    if (swiper) {
+        swiper.update();
+    }
 }, 250));
 
 // Add smooth scrolling for all internal links

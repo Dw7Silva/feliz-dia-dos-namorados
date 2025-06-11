@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Livia, com amor 💙</title>
     <meta name="description" content="Carta de amor digital do Derick para Livia">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -23,56 +25,64 @@
             </button>
         </div>
         <div class="floating-hearts"></div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
 
     <!-- Gallery Section -->
     <section id="gallery" class="gallery-section">
         <div class="container">
             <h2 class="section-title">Nossos Momentos</h2>
-            <div class="gallery-grid">
-                <div class="photo-polaroid" data-photo="1">
-                    <img src="./components/photos/photo1.jpg" alt="Nosso momento 1" loading="lazy">
-                    <div class="polaroid-caption">Sempre juntos</div>
+            <div class="swiper gallery-carousel">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide photo-polaroid">
+                        <img src="./components/photos/photo1.jpg" alt="Nosso momento 1" loading="lazy">
+                        <div class="polaroid-caption">Sempre juntos</div>
+                    </div>
+                    <div class="swiper-slide photo-polaroid">
+                        <img src="./components/photos/photo2.jpg" alt="Nosso momento 2" loading="lazy">
+                        <div class="polaroid-caption">Só importa a sua companhia</div>
+                    </div>
+                    <div class="swiper-slide photo-polaroid">
+                        <img src="./components/photos/photo3.jpg" alt="Nosso momento 3" loading="lazy">
+                        <div class="polaroid-caption">Sempre nos amando</div>
+                    </div>
+                    <div class="swiper-slide photo-polaroid">
+                        <img src="./components/photos/photo4.jpg" alt="Nosso momento 4" loading="lazy">
+                        <div class="polaroid-caption">Risadas juntos</div>
+                    </div>
+                    <div class="swiper-slide photo-polaroid">
+                        <img src="./components/photos/photo5.jpg" alt="Nosso momento 5" loading="lazy">
+                        <div class="polaroid-caption">Juntos com Deus</div>
+                    </div>
+                    <div class="swiper-slide video-polaroid">
+                        <video poster="./components/video/fundo video.PNG" controls>
+                            <source src="./components/video/our-video.mp4" type="video/mp4">
+                            Nosso vídeo especial
+                        </video>
+                        <div class="polaroid-caption">Nosso vídeo</div>
+                    </div>
+                    <div class="swiper-slide photo-polaroid">
+                        <img src="./components/photos/photo6.jpg" alt="Nosso momento 6" loading="lazy">
+                        <div class="polaroid-caption">Três meses</div>
+                    </div>
+                    <div class="swiper-slide photo-polaroid">
+                        <img src="./components/photos/photo7.png" alt="Nosso momento 7" loading="lazy">
+                        <div class="polaroid-caption">Aventuras</div>
+                    </div>
+                    <div class="swiper-slide photo-polaroid">
+                        <img src="./components/photos/photo8.jpg" alt="Nosso momento 8" loading="lazy">
+                        <div class="polaroid-caption">Cumplicidade</div>
+                    </div>
+                    <div class="swiper-slide photo-polaroid">
+                        <img src="./components/photos/photo9.jpg" alt="Nosso momento 9" loading="lazy">
+                        <div class="polaroid-caption">Carinho</div>
+                    </div>
                 </div>
-                <div class="photo-polaroid" data-photo="2">
-                    <img src="./components/photos/photo2.jpg" alt="Nosso momento 2" loading="lazy">
-                    <div class="polaroid-caption">Só importa a sua companhia</div>
-                </div>
-                <div class="photo-polaroid" data-photo="3">
-                    <img src="./components/photos/photo3.jpg" alt="Nosso momento 3" loading="lazy">
-                    <div class="polaroid-caption">Sempre nos amando</div>
-                </div>
-                <div class="photo-polaroid" data-photo="4">
-                    <img src="./components/photos/photo4.jpg" alt="Nosso momento 4" loading="lazy">
-                    <div class="polaroid-caption">Risadas juntos</div>
-                </div>
-                <div class="photo-polaroid" data-photo="5">
-                    <img src="./components/photos/photo5.jpg" alt="Nosso momento 5" loading="lazy">
-                    <div class="polaroid-caption">Juntos com Deus</div>
-                </div>
-                <div class="video-polaroid">
-                    <video poster="./components/video/fundo video.PNG" controls>
-                        <source src="./components/video/our-video.mp4" type="video/mp4">
-                        Nosso vídeo especial
-                    </video>
-                    <div class="polaroid-caption">Nosso vídeo</div>
-                </div>
-                <div class="photo-polaroid" data-photo="6">
-                    <img src="./components/photos/photo6.jpg" alt="Nosso momento 6" loading="lazy">
-                    <div class="polaroid-caption">Três meses</div>
-                </div>
-                <div class="photo-polaroid" data-photo="7">
-                    <img src="./components/photos/photo7.png" alt="Nosso momento 7" loading="lazy">
-                    <div class="polaroid-caption">Aventuras</div>
-                </div>
-                <div class="photo-polaroid" data-photo="8">
-                    <img src="./components/photos/photo8.jpg" alt="Nosso momento 8" loading="lazy">
-                    <div class="polaroid-caption">Cumplicidade</div>
-                </div>
-                <div class="photo-polaroid" data-photo="9">
-                    <img src="./components/photos/photo9.jpg" alt="Nosso momento 9" loading="lazy">
-                    <div class="polaroid-caption">Carinho</div>
-                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
 
             <!-- Music Player -->
@@ -181,10 +191,14 @@
             <div class="gift-reveal">
                 <h2 class="gift-title">Seu Presente 🎁</h2>
                 <div class="gift-image">
-                    <img src="./components/casecanetinha.png" alt="Case de canetas coloridas" id="giftImg">
+                    <img src="./components/casecanetinha.png" alt="Case de canetas coloridas" id="giftImg"
+                        loading="lazy">
                 </div>
                 <div class="gift-message" id="giftMessage">
                     <p>"Porque até nos rabiscos, você faz minha vida mais colorida. Te amo, Stitch da minha vida!"</p>
+                </div>
+                <div>
+                    <p style="font-weight: bolder; font-size: x-large;">Olha atras do banco do seu carro</p>
                 </div>
             </div>
         </div>
@@ -205,13 +219,14 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="stitch-surprise">
-                <img src="./components/stitch.png" alt="Stitch" class="stitch-image">
+                <img src="./components/stitch.png" alt="Stitch" class="stitch-image" loading="lazy">
                 <p class="stitch-message">Livia + Derick = 💙</p>
                 <p class="stitch-quote">"Ohana significa família, e família significa que ninguém fica para trás!"</p>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 
